@@ -40,7 +40,20 @@ namespace Service
 
         public int CalcularPontosPorDependente(Familia familia)
         {
-            throw new NotImplementedException();
+            var quantidadeDeDependentes = familia.Pessoas
+                .Where(p => p.Tipo == "Dependente" 
+                && Auxiliar.CalculateAge(p.DataDeNascimento) < 18)
+                .Count();
+
+            if(quantidadeDeDependentes >= 3)
+            {
+                return 3;
+            }
+            else if(quantidadeDeDependentes > 0)
+            {
+                return 2;
+            }
+            return 0;
         }
 
         public int CalcularPontosPorIdade(Familia familia)

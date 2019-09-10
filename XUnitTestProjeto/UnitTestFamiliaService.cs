@@ -28,7 +28,13 @@ namespace XUnitTestProjeto
 
             lista.Add(new Familia { Id = "53ce49c7-e793-48c8-bf69-381c9e5dc9e3",
                 Rendas = new List<Renda> { new Renda { Valor = 900 }, new Renda { Valor = 500 } },
-                Pessoas = new List<Pessoa> { new Pessoa { DataDeNascimento = new DateTime(1968,1,1), Tipo = "Pretendente"} }
+                Pessoas = new List<Pessoa> {
+                    new Pessoa { DataDeNascimento = new DateTime(1968,1,1), Tipo = "Pretendente"},
+                    new Pessoa { DataDeNascimento = new DateTime(2015,1,1), Tipo = "Dependente"},
+                    new Pessoa { DataDeNascimento = new DateTime(2014,1,1), Tipo = "Dependente"},
+                    new Pessoa { DataDeNascimento = new DateTime(1988,1,1), Tipo = "Dependente"}
+                }
+
             });
 
 
@@ -36,21 +42,35 @@ namespace XUnitTestProjeto
             {
                 Id = "994d69bf-1635-48fd-9f70-5b7c5c25dab0",
                 Rendas = new List<Renda> { new Renda { Valor = 300 }, new Renda { Valor = 200 }, },
-                Pessoas = new List<Pessoa> { new Pessoa { DataDeNascimento = new DateTime(1976,1,1), Tipo = "Pretendente"} }
+                Pessoas = new List<Pessoa> {
+                    new Pessoa { DataDeNascimento = new DateTime(1976,1,1), Tipo = "Pretendente"},
+                    new Pessoa { DataDeNascimento = new DateTime(1980,1,1), Tipo = "Dependente"}
+                }
             });
 
             lista.Add(new Familia
             {
                 Id = "38d89727-fc4a-41c2-83b6-1161bee29768",
                 Rendas = new List<Renda> { new Renda { Valor = 1200 }, new Renda { Valor = 302 }, },
-                Pessoas = new List<Pessoa> { new Pessoa { DataDeNascimento = new DateTime(1995,1,1), Tipo = "Pretendente"} }
+                Pessoas = new List<Pessoa> {
+                    new Pessoa { DataDeNascimento = new DateTime(1995,1,1), Tipo = "Pretendente"},
+                    new Pessoa { DataDeNascimento = new DateTime(2015,1,1), Tipo = "Dependente"},
+                    new Pessoa { DataDeNascimento = new DateTime(2002,1,1), Tipo = "Dependente"},
+                    new Pessoa { DataDeNascimento = new DateTime(2013,1,1), Tipo = "Dependente"}
+                }
             });
 
             lista.Add(new Familia
             {
                 Id = "c94e2617-e57f-4c96-b68d-a4855e054094",
                 Rendas = new List<Renda> { new Renda { Valor = 1200 }, new Renda { Valor = 302 }, },
-                Pessoas = new List<Pessoa> { new Pessoa { DataDeNascimento = new DateTime(1995, 1, 1), Tipo = "Dependente" } }
+                Pessoas = new List<Pessoa> {
+                    new Pessoa { DataDeNascimento = new DateTime(1995, 1, 1), Tipo = "Dependente" },
+                    new Pessoa { DataDeNascimento = new DateTime(2002, 1, 1), Tipo = "Dependente" },
+                    new Pessoa { DataDeNascimento = new DateTime(2001, 1, 1), Tipo = "Dependente" },
+                    new Pessoa { DataDeNascimento = new DateTime(2010, 1, 1), Tipo = "Dependente" },
+                    new Pessoa { DataDeNascimento = new DateTime(2011, 1, 1), Tipo = "Dependente" }
+                }
             });
 
             lista.Add(new Familia
@@ -101,6 +121,25 @@ namespace XUnitTestProjeto
             //Confirmacao
             Assert.Equal(pontuacao, pontos);
         }
+
+        [Theory]
+        [InlineData("53ce49c7-e793-48c8-bf69-381c9e5dc9e3",2)]
+        [InlineData("994d69bf-1635-48fd-9f70-5b7c5c25dab0",0)]
+        [InlineData("38d89727-fc4a-41c2-83b6-1161bee29768",3)]
+        [InlineData("c94e2617-e57f-4c96-b68d-a4855e054094",3)]
+        public void TestCalcularPontosPorDependente(string idFamilia, int pontuacao)
+        {
+            //Arranjo
+            var familia = FuncaoRetornaFamilias().FirstOrDefault(p => p.Id == idFamilia);
+
+            //Ação
+            var pontos = _familiaService.CalcularPontosPorDependente(familia);
+
+            //Confirmacao
+            Assert.Equal(pontuacao, pontos);
+        }
+
+
 
 
 
