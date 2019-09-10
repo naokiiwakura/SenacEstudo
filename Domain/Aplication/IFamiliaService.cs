@@ -7,7 +7,10 @@ namespace Domain.Aplication
 {
     public interface IFamiliaService
     {
-        int CalcularPontos(Familia familia);
+        int CalcularPontosPorRenda(Familia familia);
+        int CalcularPontosPorIdade(Familia familia);
+        int CalcularPontosPorDependente(Familia familia);
+        int CalcularPontosTotais(Familia familia);
         List<Familia> SortearFamilia();
     }
 }
