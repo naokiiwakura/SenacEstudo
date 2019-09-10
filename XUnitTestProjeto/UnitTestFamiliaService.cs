@@ -26,16 +26,7 @@ namespace XUnitTestProjeto
         {
             var lista = new List<Familia>();
 
-            lista.Add(new Familia { Id = "53ce49c7-e793-48c8-bf69-381c9e5dc9e3",
-                Rendas = new List<Renda> { new Renda { Valor = 900 }, new Renda { Valor = 500 } },
-                Pessoas = new List<Pessoa> {
-                    new Pessoa { DataDeNascimento = new DateTime(1968,1,1), Tipo = "Pretendente"},
-                    new Pessoa { DataDeNascimento = new DateTime(2015,1,1), Tipo = "Dependente"},
-                    new Pessoa { DataDeNascimento = new DateTime(2014,1,1), Tipo = "Dependente"},
-                    new Pessoa { DataDeNascimento = new DateTime(1988,1,1), Tipo = "Dependente"}
-                }
-
-            });
+            
 
 
             lista.Add(new Familia
@@ -78,6 +69,19 @@ namespace XUnitTestProjeto
                 Id = "3270f111-6662-47ac-b1fe-553191f652f2",
                 Rendas = new List<Renda> { new Renda { Valor = 1200 }, new Renda { Valor = 302 }, },
                 Pessoas = new List<Pessoa> { new Pessoa { DataDeNascimento = new DateTime(1974, 12, 31), Tipo = "Pretendente" } }
+            });
+
+            lista.Add(new Familia
+            {
+                Id = "53ce49c7-e793-48c8-bf69-381c9e5dc9e3",
+                Rendas = new List<Renda> { new Renda { Valor = 900 }, new Renda { Valor = 500 } },
+                Pessoas = new List<Pessoa> {
+                    new Pessoa { DataDeNascimento = new DateTime(1968,1,1), Tipo = "Pretendente"},
+                    new Pessoa { DataDeNascimento = new DateTime(2015,1,1), Tipo = "Dependente"},
+                    new Pessoa { DataDeNascimento = new DateTime(2014,1,1), Tipo = "Dependente"},
+                    new Pessoa { DataDeNascimento = new DateTime(1988,1,1), Tipo = "Dependente"}
+                }
+
             });
 
 
@@ -155,10 +159,21 @@ namespace XUnitTestProjeto
             Assert.Equal(pontuacao, pontos);
         }
 
+        [Fact]
+        public void TestListaSorteadaDeFamilia()
+        {
+            //Arranjo
+            _familiaRepositoryMock.Setup(p => p.Query()).Returns(FuncaoRetornaFamilias());
 
+            //Acao
+            var lista = _familiaService.SortearFamilia();
 
-
-
-
+            //Confirmacao
+            var familiaSorteada = lista.First();
+            Assert.Equal("53ce49c7-e793-48c8-bf69-381c9e5dc9e3", familiaSorteada.FamiliaId);
+            Assert.Equal(3, familiaSorteada.QuantidadeDeCriteriosAtendidos);
+            Assert.Equal(8, familiaSorteada.PontuacaoTotal);
+            Assert.NotNull(familiaSorteada.DataSelecao);           
+        }
     }
 }

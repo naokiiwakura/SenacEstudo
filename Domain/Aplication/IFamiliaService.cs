@@ -1,4 +1,5 @@
-﻿using Domain.Model;
+﻿using Domain.DTO;
+using Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,6 +12,6 @@ namespace Domain.Aplication
         int CalcularPontosPorIdade(Familia familia);
         int CalcularPontosPorDependente(Familia familia);
         int CalcularPontosTotais(Familia familia);
-        List<Familia> SortearFamilia();
+        List<FamiliaDto> SortearFamilia();
     }
 }

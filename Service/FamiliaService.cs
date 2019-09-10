@@ -1,4 +1,5 @@
 ﻿using Domain.Aplication;
+using Domain.DTO;
 using Domain.Infra;
 using Domain.Model;
 using Service.Tools;
@@ -86,7 +87,7 @@ namespace Service
             return CalcularPontosPorRenda(familia) + CalcularPontosPorIdade(familia) + CalcularPontosPorDependente(familia);
         }
 
-        public List<Familia> SortearFamilia()
+        public List<FamiliaDto> SortearFamilia()
         {
             throw new NotImplementedException();
         }
