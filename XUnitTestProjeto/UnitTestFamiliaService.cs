@@ -139,6 +139,23 @@ namespace XUnitTestProjeto
             Assert.Equal(pontuacao, pontos);
         }
 
+        [Theory]
+        [InlineData("53ce49c7-e793-48c8-bf69-381c9e5dc9e3",8)]
+        [InlineData("994d69bf-1635-48fd-9f70-5b7c5c25dab0", 7)]
+        [InlineData("38d89727-fc4a-41c2-83b6-1161bee29768",5)]
+        public void TestCalcularPontosTotais(string idFamilia, int pontuacao)
+        {
+            //Arranjo
+            var familia = FuncaoRetornaFamilias().FirstOrDefault(p => p.Id == idFamilia);
+
+            //Ação
+            var pontos = _familiaService.CalcularPontosTotais(familia);
+
+            //Confirmacao
+            Assert.Equal(pontuacao, pontos);
+        }
+
+
 
 
 

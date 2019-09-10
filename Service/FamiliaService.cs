@@ -83,7 +83,7 @@ namespace Service
 
         public int CalcularPontosTotais(Familia familia)
         {
-            throw new NotImplementedException();
+            return CalcularPontosPorRenda(familia) + CalcularPontosPorIdade(familia) + CalcularPontosPorDependente(familia);
         }
 
         public List<Familia> SortearFamilia()
