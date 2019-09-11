@@ -36,7 +36,8 @@ namespace XUnitTestProjeto
                 Pessoas = new List<Pessoa> {
                     new Pessoa { DataDeNascimento = new DateTime(1976,1,1), Tipo = "Pretendente"},
                     new Pessoa { DataDeNascimento = new DateTime(1980,1,1), Tipo = "Dependente"}
-                }
+                },
+                Status = 1
             });
 
             lista.Add(new Familia
@@ -48,7 +49,8 @@ namespace XUnitTestProjeto
                     new Pessoa { DataDeNascimento = new DateTime(2015,1,1), Tipo = "Dependente"},
                     new Pessoa { DataDeNascimento = new DateTime(2002,1,1), Tipo = "Dependente"},
                     new Pessoa { DataDeNascimento = new DateTime(2013,1,1), Tipo = "Dependente"}
-                }
+                },
+                Status = 3
             });
 
             lista.Add(new Familia
@@ -61,14 +63,16 @@ namespace XUnitTestProjeto
                     new Pessoa { DataDeNascimento = new DateTime(2001, 1, 1), Tipo = "Dependente" },
                     new Pessoa { DataDeNascimento = new DateTime(2010, 1, 1), Tipo = "Dependente" },
                     new Pessoa { DataDeNascimento = new DateTime(2011, 1, 1), Tipo = "Dependente" }
-                }
+                },
+                Status = 0
             });
 
             lista.Add(new Familia
             {
                 Id = "3270f111-6662-47ac-b1fe-553191f652f2",
                 Rendas = new List<Renda> { new Renda { Valor = 1200 }, new Renda { Valor = 302 }, },
-                Pessoas = new List<Pessoa> { new Pessoa { DataDeNascimento = new DateTime(1974, 12, 31), Tipo = "Pretendente" } }
+                Pessoas = new List<Pessoa> { new Pessoa { DataDeNascimento = new DateTime(1974, 12, 31), Tipo = "Pretendente" } },
+                Status = 0
             });
 
             lista.Add(new Familia
@@ -80,8 +84,26 @@ namespace XUnitTestProjeto
                     new Pessoa { DataDeNascimento = new DateTime(2015,1,1), Tipo = "Dependente"},
                     new Pessoa { DataDeNascimento = new DateTime(2014,1,1), Tipo = "Dependente"},
                     new Pessoa { DataDeNascimento = new DateTime(1988,1,1), Tipo = "Dependente"}
-                }
+                },
+                Status = 0
 
+            });
+
+            lista.Add(new Familia
+            {
+                Id = "da49b3c1-c41c-48aa-8454-e3fe96907ea9",
+                Rendas = new List<Renda> { new Renda { Valor = 200 }, new Renda { Valor = 200 } },
+                Pessoas = new List<Pessoa> {
+                    new Pessoa { DataDeNascimento = new DateTime(1968,1,1), Tipo = "Pretendente"},
+                    new Pessoa { DataDeNascimento = new DateTime(2015,1,1), Tipo = "Dependente"},
+                    new Pessoa { DataDeNascimento = new DateTime(2014,1,1), Tipo = "Dependente"},
+                    new Pessoa { DataDeNascimento = new DateTime(2002,1,1), Tipo = "Dependente"},
+                    new Pessoa { DataDeNascimento = new DateTime(2003,1,1), Tipo = "Dependente"},
+                    new Pessoa { DataDeNascimento = new DateTime(2004,1,1), Tipo = "Dependente"},
+                    new Pessoa { DataDeNascimento = new DateTime(2005,1,1), Tipo = "Dependente"},
+                    new Pessoa { DataDeNascimento = new DateTime(2006,1,1), Tipo = "Dependente"},
+                },
+                Status = 3
             });
 
 
