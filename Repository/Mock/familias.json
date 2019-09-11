@@ -1,6 +1,6 @@
 [
   {
-    "id": "3dac7da3-d742-4e51-95f9-bbb37f522413",
+    "Id": "3dac7da3-d742-4e51-95f9-bbb37f522413",
     "pessoas": [
       {
         "id": "5e65eea1-aa72-407e-9a67-88045c07b5de",
@@ -37,6 +37,6 @@
         "valor": 950
       }
     ],
-    "status": "2"
+    "status": "0"
   }
 ]
