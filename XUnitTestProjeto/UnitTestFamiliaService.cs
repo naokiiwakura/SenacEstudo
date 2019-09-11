@@ -178,7 +178,7 @@ namespace XUnitTestProjeto
             var pontos = _familiaService.CalcularPontosTotais(familia);
 
             //Confirmacao
-            Assert.Equal(pontuacao, pontos);
+            Assert.Equal(pontuacao, pontos.TotalDePontos);
         }
 
         [Fact]
@@ -193,8 +193,8 @@ namespace XUnitTestProjeto
             //Confirmacao
             var familiaSorteada = lista.First();
             Assert.Equal("53ce49c7-e793-48c8-bf69-381c9e5dc9e3", familiaSorteada.FamiliaId);
-            Assert.Equal(3, familiaSorteada.QuantidadeDeCriteriosAtendidos);
-            Assert.Equal(8, familiaSorteada.PontuacaoTotal);
+            Assert.Equal(3, familiaSorteada.PontosECriterios.QuantidadeDeCriteriosAtendidos);
+            Assert.Equal(8, familiaSorteada.PontosECriterios.TotalDePontos);
             Assert.NotNull(familiaSorteada.DataSelecao);           
         }
     }

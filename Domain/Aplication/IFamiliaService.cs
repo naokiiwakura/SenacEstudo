@@ -11,7 +11,7 @@ namespace Domain.Aplication
         int CalcularPontosPorRenda(Familia familia);
         int CalcularPontosPorIdade(Familia familia);
         int CalcularPontosPorDependente(Familia familia);
-        int CalcularPontosTotais(Familia familia);
+        PontosTotaisDto CalcularPontosTotais(Familia familia);
         List<FamiliaDto> SortearFamilia();
     }
 }

@@ -82,14 +82,53 @@ namespace Service
             return 0;
         }
 
-        public int CalcularPontosTotais(Familia familia)
+        public PontosTotaisDto CalcularPontosTotais(Familia familia)
         {
-            return CalcularPontosPorRenda(familia) + CalcularPontosPorIdade(familia) + CalcularPontosPorDependente(familia);
+            var ptRenda = CalcularPontosPorRenda(familia);
+            var ptIdade = CalcularPontosPorIdade(familia);
+            var ptDependente = CalcularPontosPorDependente(familia);
+
+            var qtdCriteriosAtendido = 0;
+            if (ptRenda > 0)
+                qtdCriteriosAtendido++;
+            if (ptIdade > 0)
+                qtdCriteriosAtendido++;
+            if (ptDependente > 0)
+                qtdCriteriosAtendido++;
+
+
+            return new PontosTotaisDto {
+                TotalDePontos = ptRenda+ptIdade+ptDependente,
+                QuantidadeDeCriteriosAtendidos = qtdCriteriosAtendido
+            };
+        }
+
+
+        private int CalcularCriteriosAtendidos(Familia familia)
+        {
+            var criteriosAtendidos = 0;
+            if(CalcularPontosPorIdade(familia) > 0)
+            {
+                criteriosAtendidos++;
+            }
+            if(CalcularPontosPorRenda(familia) > 0)
+            {
+                criteriosAtendidos++;
+            }
+            if(CalcularPontosPorDependente(familia) > 0)
+            {
+                criteriosAtendidos++;
+            }
+            return criteriosAtendidos;
         }
 
         public List<FamiliaDto> SortearFamilia()
         {
-            throw new NotImplementedException();
+            return _familiaRepository.Query().Where(p => p.Status == 0).Select(p => new FamiliaDto {
+                FamiliaId = p.Id,
+                DataSelecao = DateTime.Now,
+                PontosECriterios = CalcularPontosTotais(p),
+            }).OrderByDescending(p => p.PontosECriterios.TotalDePontos).ToList();
         }
     }
 }
