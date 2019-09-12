@@ -124,7 +124,7 @@ namespace Service
 
         public List<FamiliaDto> SortearFamilia()
         {
-            return _familiaRepository.Query().Where(p => p.Status == 0).Select(p => new FamiliaDto {
+            return _familiaRepository.Query().Select(p => new FamiliaDto {
                 FamiliaId = p.Id,
                 DataSelecao = DateTime.Now,
                 PontosECriterios = CalcularPontosTotais(p),
